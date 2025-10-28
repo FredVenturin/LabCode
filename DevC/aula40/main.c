@@ -1,69 +1,49 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define TAMANHO 100
-#define QUANTIDADE 5
 
-int main()
-{
-    char palavra[TAMANHO], menorPalavra[TAMANHO], maiorPalavra[TAMANHO];
-    unsigned t1,t2,t3, contador = 0;
-    int Flag = 0;
+#define TAMANHO     100
+#define QUANTIDADE    5
 
+int main() {
 
-    do{
-        printf("Insira a palavra 1: ");
-        scanf(" \n%[^\n]", palavra);
-        t1 = strlen(palavra);
-        if (t1 < 2){
+    char palavra[TAMANHO], maiorPalavra[TAMANHO], menorPalavra[TAMANHO];
+    int contador = 0;
+    unsigned t1;
+    
 
-            printf("Insira uma palavra valida (acima de um caracter).\n");
-            Flag = 0;
+    while (contador < QUANTIDADE) {
 
-        } else {
-
-            strcpy(maiorPalavra, palavra);
-            strcpy(menorPalavra, palavra);
-            Flag = 1;
-
-            contador = 1;}
-
-    }while(Flag == 0);
-
-
-    while (contador < QUANTIDADE){
-
-        printf("Insira a palavra %i: ", contador +1);
+        printf("\nInsira a palavra %i: ", contador + 1);
         scanf("\n%[^\n]", palavra);
 
         t1 = strlen(palavra);
+        
 
-        t2 = strlen(maiorPalavra);
-
-        t3 = strlen(menorPalavra);
-       if(t1 < 2){
-            printf("Insira uma palavra valida (acima de um caracter).\n");
+        if (t1 < 2) {
+            printf("\nInsira uma palavra com mais de 2 caracteres.\n");
             continue;
         }
-
-        if (t1 > t2){
+        if (contador == 0){
+            
             strcpy(maiorPalavra, palavra);
-
-        }
-
-        else if (t1 < t3) {
             strcpy(menorPalavra, palavra);
-
+            
+        } else {
+            
+            if (t1 > strlen(maiorPalavra)) {
+                strcpy(maiorPalavra, palavra);
+            } else if (t1 < strlen(menorPalavra)) {
+                strcpy(menorPalavra, palavra);
+            }            
         }
-
-
+        
         contador++;
-
+        
     }
 
-    printf("A maior palavra e %s\n", maiorPalavra);
-    printf("A menor palavra e %s", menorPalavra);
-
+    printf("\nA maior palavra e %s\n", maiorPalavra);
+    printf("\nA menor palavra e %s\n", menorPalavra);
 
     return 0;
 }
