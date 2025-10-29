@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <string.h>
+#define TAMANHO 3000
+#define TAMANHO_P 100
+
+int main(void) {
+    char texto[TAMANHO] = "50 Anos da Universidade Vila Velha - UVV: Uma Trajetória de Excelência e Inovação\nA UVV completa 50 anos de história...";
+    char palavra[TAMANHO_P];
+    char opcao[TAMANHO_P];
+    char aux[TAMANHO_P];
+    int contador;
+
+    do {
+        printf("\nEscolha uma opcao:\n");
+        printf("'procurar' para procurar uma palavra.\n");
+        printf("'SAIR' ou 'sair' para encerrar.\n");
+        printf("Escreva a opcao: ");
+        scanf("%s", opcao);
+
+        if (strcmp("procurar", opcao) == 0) {
+            printf("\nEscolha uma palavra para a pesquisa: ");
+            scanf("%s", palavra);
+
+            contador = 0; 
+            int i = 0;
+
+            while (texto[i] != '\0') {
+                
+                while (texto[i] == ' ' || texto[i] == '\n' || texto[i] == '\t' ||
+                       texto[i] == ',' || texto[i] == '.' || texto[i] == ';' ||
+                       texto[i] == ':' || texto[i] == '-' || texto[i] == '!') {
+                    i++;
+                }
+
+               
+                int k = 0;
+                while (texto[i] != ' ' && texto[i] != '\n' && texto[i] != '\t' &&
+                       texto[i] != ',' && texto[i] != '.' && texto[i] != ';' &&
+                       texto[i] != ':' && texto[i] != '-' && texto[i] != '!' &&
+                       texto[i] != '\0') {
+                    aux[k++] = texto[i++];
+                }
+                aux[k] = '\0';
+
+                
+                if (strcmp(aux, palavra) == 0) {
+                    contador++;
+                }
+            }
+
+            printf("A palavra '%s' aparece %d vezes no texto.\n", palavra, contador);
+        } 
+        else if (strcmp("SAIR", opcao) == 0 || strcmp("sair", opcao) == 0){
+            printf("Obrigado por utilizar o programa!");
+        } else {
+            printf("Favor inserir uma das possiveis opcoes!");
+        }
+
+    } while (strcmp("SAIR", opcao) != 0 && strcmp("sair", opcao) != 0);
+
+    return 0;
+}
