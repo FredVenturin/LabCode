@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1762211581 source:c:\devc\aulamod\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
