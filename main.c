@@ -2,26 +2,39 @@
 #include <stdlib.h>
 #include <math.h>
 
+void cubo1 (float L, float * area, float *volume);
 
-int main(void)
-{
-  float A,B,C;
-  printf ("Calculadora de Hipotenusa (A): Catetos (B e C).\n");
-
-  printf("Valor de B: ");
-  scanf("%f",&B);
-
-  printf("Valor de C: ");
-  scanf("%f",&C);
-
-  float B1 = pow(B,2);
-  float C1 = pow(C,2);
-
-  A = sqrt(B1 + C1);
-
-  printf("A hipotenusa 'A' mede %.1f \n", A );
-
-  return 0;
+void cubo1 (float L, float * area, float *volume){
+    *area = 6*pow(L,2);
+    *volume = pow(L,3);
 
 }
 
+
+int main()
+{
+    int contador = 0;
+    float L, area,volume;
+
+    while (contador <100){
+        printf("\nDados do cubo %i:\n", contador +1);
+        printf("\nValor do lado (L > 0): ");
+        scanf("%f", &L);
+
+        if (L<= 0){
+            printf("ERRO");
+        } else {
+            printf("Dados de saida:\n");
+            cubo1(L, &area, &volume);
+            printf("Area: %.1f metros quadrados.\n", area);
+            printf("volume: %.1f metros cubicos.\n",volume);
+            contador++;
+
+        }
+
+
+    }
+
+
+    return 0;
+}
